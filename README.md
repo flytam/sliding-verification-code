@@ -1,6 +1,6 @@
 # sliding-verification-code
 
-滑动验证码
+react 滑动验证码
 
 ```bash
 npm i react-sliding-verification // 未发布
