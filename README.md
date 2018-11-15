@@ -60,6 +60,8 @@ ReactDOM.render(<App />, document.getElementById("app"));
 
 样式弄好看点 && 自定义样式 && 测试
 
+不规则图像生成、速度控制等等...
+
 ### 开发预览
 
 ```bash
