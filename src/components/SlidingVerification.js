@@ -158,7 +158,7 @@ class SlidingVerification extends React.Component {
                 <div
                     style={{
                         height: "8px",
-                        width: "250px",
+                        width,
                         backgroundColor: "red",
                         position: "relative"
                     }}

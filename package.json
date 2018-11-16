@@ -1,7 +1,7 @@
 {
-  "name": "react-component-starter",
+  "name": "sliding-verification-code",
   "version": "0.0.1",
-  "description": "react组件开发-脚手架",
+  "description": "react简易滑动验证",
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development --config ./webpack.config.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flytam/react-component-starter.git"
+    "url": "git+https://github.com/flytam/sliding-verification-code.git"
   },
   "author": "flytam",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flytam/react-component-starter/issues"
+    "url": "https://github.com/flytam/sliding-verification-code/issues"
   },
-  "homepage": "https://github.com/flytam/react-component-starter#readme",
+  "homepage": "https://github.com/flytam/sliding-verification-code#readme",
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
