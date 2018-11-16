@@ -15,6 +15,7 @@ const App = () => {
             <SlidingVerification
                 src={srcArr[srcIndex % 2]}
                 onSlide={number => console.log(number)}
+                innerColor="#00BFFF"
                 onFinish={isOK => {
                     if (isOK) {
                         setText("验证成功");

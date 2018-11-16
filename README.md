@@ -61,7 +61,16 @@ ReactDOM.render(<App />, document.getElementById("app"));
     内部缺块正方形占图片的百分比
 
 -   errorRange number 可选
+
     误差像素允许范围，默认 10px
+
+-   innerColor string 可选
+
+    内部缺块颜色，默认"#000000"
+
+-   isErrorChange boolean 可选
+
+    验证错误时是否重新生成位置，默认 true
 
 ### todo
 

@@ -5,6 +5,8 @@ class SlidingVerification extends React.Component {
         src: "",
         errorRange: 10,
         innerLengthPencent: 0.2, // 内部缺块正方形的边长百分比  0-0.2
+        innerColor: "#000000",
+        isErrorChange: true, // 验证错误是否重新生成位置
         onFinish: () => {},
         onSlide: () => {}
     };
@@ -36,7 +38,7 @@ class SlidingVerification extends React.Component {
         // 缺块原图
         const dirtyContext = this.dirtyCanvas.getContext("2d");
 
-        const { innerLengthPencent } = this.props;
+        const { innerLengthPencent, innerColor } = this.props;
         const { src } = this.state;
         const img = new Image();
         img.crossOrigin = "anonymous";
@@ -75,7 +77,7 @@ class SlidingVerification extends React.Component {
             coverCanvas.height = this.innerLength;
 
             const coverContext = coverCanvas.getContext("2d");
-            context.fillStyle = "#000000";
+            coverContext.fillStyle = innerColor;
             coverContext.fillRect(0, 0, this.innerLength, this.innerLength);
 
             const coverImageData = coverContext.getImageData(
@@ -93,11 +95,12 @@ class SlidingVerification extends React.Component {
         document.addEventListener("mousemove", e => {
             if (this.isDown) {
                 const { onSlide } = this.props;
+                const { width } = this.state;
                 const currentX = e.pageX;
                 this.setState(preState => ({
                     slideStyle: {
                         ...preState.slideStyle,
-                        left: `${currentX - this.initialX}px`
+                        left: `${Math.min(currentX - this.initialX, width)}px`
                     }
                 }));
                 if (typeof onSlide === "function") {
@@ -114,7 +117,7 @@ class SlidingVerification extends React.Component {
 
         document.addEventListener("mouseup", e => {
             if (this.isDown) {
-                const { onFinish, errorRange } = this.props;
+                const { onFinish, errorRange, isErrorChange } = this.props;
                 const currentX = e.pageX;
                 // 检测是否到了
                 this.isDown = false;
@@ -131,7 +134,7 @@ class SlidingVerification extends React.Component {
                     }
                     onFinish(isOK); // or false
                 }
-                if (!isOK) {
+                if (!isOK && isErrorChange) {
                     this.generateImg();
                     this.setState(preState => ({
                         slideStyle: {
