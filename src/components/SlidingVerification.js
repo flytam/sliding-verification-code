@@ -11,9 +11,24 @@ class SlidingVerification extends React.Component {
     state = {
         width: 0,
         height: 0,
-        slideStyle: {}
+        slideStyle: {},
+        src: null
     };
 
+    static getDerivedStateFromProps = (props, state) => {
+        if (props.src !== state.src) {
+            return {
+                src: props.src
+            };
+        }
+        return null;
+    };
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevState.src !== this.state.src) {
+            this.generateImg();
+        }
+    };
     generateImg = () => {
         // 整张图片
         const context = this.canvas.getContext("2d");
@@ -21,7 +36,8 @@ class SlidingVerification extends React.Component {
         // 缺块原图
         const dirtyContext = this.dirtyCanvas.getContext("2d");
 
-        const { src, innerLengthPencent } = this.props;
+        const { innerLengthPencent } = this.props;
+        const { src } = this.state;
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.src = src;
