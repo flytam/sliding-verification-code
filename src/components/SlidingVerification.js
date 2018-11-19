@@ -7,6 +7,7 @@ class SlidingVerification extends React.Component {
         innerLengthPencent: 0.2, // 内部缺块正方形的边长百分比  0-0.2
         innerColor: "#000000",
         isErrorChange: true, // 验证错误是否重新生成位置
+        
         onFinish: () => {},
         onSlide: () => {}
     };
